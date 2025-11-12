@@ -40,35 +40,31 @@
                     <input type="text" id="rg" required>
                 </div>
                 <div class="form-group">
-                    <label for="telefone">Telefone/WhatsApp *</label>
+                    <label for="telefone">Telefone / WhatsApp *</label>
                     <input type="tel" id="telefone" placeholder="(00) 00000-0000" required>
                 </div>
-                <div class="form-group full-width">
+                <div class="form-group">
                     <label for="email">E-mail *</label>
-                    <input type="email" id="email" required>
+                    <input type="email" id="email" placeholder="exemplo@email.com" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="cep">CEP *</label>
-                    <input type="text" id="cep" placeholder="00000000" required maxlength="8" onblur="buscarCEP()">
-                    <small class="cep-info">Preencha o CEP para preenchimento automático do endereço.</small>
+                    <input type="text" id="cep" onkeyup="buscarCEP()" placeholder="00000-000" maxlength="8" required>
                 </div>
-
                 <div class="form-group full-width">
-                    <label for="endereco">Endereço Completo *</label>
-                    <input type="text" id="endereco" placeholder="Rua, número, complemento" required>
+                    <label for="endereco">Endereço (Rua, N°, Bairro) *</label>
+                    <input type="text" id="endereco" required>
                 </div>
-                
                 <div class="form-group">
                     <label for="estado">Estado *</label>
-                    <select id="estado" required onchange="carregarCidades(this.value)">
+                    <select id="estado" onchange="carregarCidades(this.value)" required>
                         <option value="">Selecione o Estado</option>
                         </select>
                 </div>
-
                 <div class="form-group">
                     <label for="cidade">Cidade *</label>
-                    <select id="cidade" required>
+                    <select id="cidade" disabled required>
                         <option value="">Selecione o Estado primeiro</option>
                     </select>
                 </div>
@@ -81,21 +77,29 @@
                 Experiência Profissional
             </h2>
             <div class="form-grid">
-                <div class="form-group full-width">
-                    <label for="experienciaPromocao">Possui experiência como Promotor de Vendas? *</label>
+                <div class="form-group">
+                    <label for="experienciaPromocao">Já trabalhou como Promotor? *</label>
                     <select id="experienciaPromocao" required>
                         <option value="">Selecione</option>
                         <option value="sim">Sim</option>
                         <option value="nao">Não</option>
+                        <option value="sim-area-similar">Sim, em área similar (Ex: Repositor)</option>
                     </select>
                 </div>
-                <div class="form-group full-width">
-                    <label for="tempoExperiencia">Se sim, há quanto tempo?</label>
-                    <input type="text" id="tempoExperiencia" placeholder="Ex: 2 anos">
+                <div class="form-group">
+                    <label for="tempoExperiencia">Tempo de Experiência (Total)</label>
+                    <select id="tempoExperiencia">
+                        <option value="">Selecione</option>
+                        <option value="nenhum">Nenhuma</option>
+                        <option value="menos-6-meses">Menos de 6 meses</option>
+                        <option value="6m-a-1ano">6 meses a 1 ano</option>
+                        <option value="1-a-3-anos">1 a 3 anos</option>
+                        <option value="mais-3-anos">Mais de 3 anos</option>
+                    </select>
                 </div>
-                <div class="form-group full-width">
-                    <label for="empresasAnteriores">Empresas anteriores em que trabalhou como promotor</label>
-                    <textarea id="empresasAnteriores" rows="3" placeholder="Liste as empresas e o período trabalhado"></textarea>
+                 <div class="form-group full-width">
+                    <label for="empresasAnteriores">Empresas anteriores (e cargos)</label>
+                    <textarea id="empresasAnteriores" rows="3" placeholder="Ex: Empresa ABC (Promotor), Empresa XYZ (Repositor)"></textarea>
                 </div>
                 <div class="form-group full-width">
                     <label for="motivoSaida">Motivo da saída do último emprego</label>
@@ -110,41 +114,42 @@
                 Conhecimentos Técnicos e Recursos
             </h2>
             <div class="form-grid">
-                <div class="form-group full-width">
-                    <label for="temCelularProprio">Possui celular próprio com câmera e internet? *</label>
+                <div class="form-group">
+                    <label for="temCelularProprio">Possui celular próprio (Android/iOS)? *</label>
                     <select id="temCelularProprio" required>
                         <option value="">Selecione</option>
-                        <option value="sim">Sim</option>
-                        <option value="nao">Não</option>
+                        <option value="sim-android">Sim, Android</option>
+                        <option value="sim-ios">Sim, iOS (iPhone)</option>
+                        <option value="nao">Não possuo</option>
                     </select>
                 </div>
-                <div class="form-group full-width">
-                    <label for="conheceAppEstoque">Já utilizou aplicativos de controle de estoque? *</label>
-                    <select id="conheceAppEstoque" required>
+                <div class="form-group">
+                    <label for="conheceAppEstoque">Conhece apps de estoque/coleta? *</label>
+                     <select id="conheceAppEstoque" required>
                         <option value="">Selecione</option>
-                        <option value="sim">Sim, tenho experiência</option>
-                        <option value="pouca">Sim, mas pouca experiência</option>
-                        <option value="nao">Não, mas tenho facilidade para aprender</option>
-                        <option value="nao_facilidade">Não e tenho dificuldade com tecnologia</option>
+                        <option value="sim">Sim, já utilizei</option>
+                        <option value="nao">Não, mas aprendo rápido</option>
                     </select>
                 </div>
-                <div class="form-group full-width">
-                    <label for="facilidadeTecnologia">Como você avalia sua facilidade com tecnologia e aplicativos? *</label>
+                <div class="form-group">
+                    <label for="facilidadeTecnologia">Facilidade com tecnologia (0 a 10) *</label>
                     <select id="facilidadeTecnologia" required>
                         <option value="">Selecione</option>
-                        <option value="excelente">Excelente - Aprendo muito rápido</option>
-                        <option value="boa">Boa - Consigo aprender sem dificuldades</option>
-                        <option value="regular">Regular - Preciso de ajuda às vezes</option>
-                        <option value="dificuldade">Tenho dificuldades</option>
+                        <option value="10">10 (Expert)</option>
+                        <option value="8-9">8-9 (Avançado)</option>
+                        <option value="6-7">6-7 (Intermediário)</option>
+                        <option value="3-5">3-5 (Básico)</option>
+                        <option value="0-2">0-2 (Nenhuma)</option>
                     </select>
                 </div>
-                <div class="form-group full-width">
-                    <label for="possuiVeiculo">Possui veículo próprio?</label>
+                 <div class="form-group">
+                    <label for="possuiVeiculo">Possui veículo próprio (Moto/Carro)?</label>
                     <select id="possuiVeiculo">
                         <option value="">Selecione</option>
-                        <option value="carro">Sim, carro</option>
-                        <option value="moto">Sim, moto</option>
                         <option value="nao">Não</option>
+                        <option value="moto">Sim, Moto</option>
+                        <option value="carro">Sim, Carro</option>
+                        <option value="ambos">Sim, Ambos</option>
                     </select>
                 </div>
             </div>
@@ -155,33 +160,33 @@
                 <span class="section-number">4</span>
                 Atividades com Celular Próprio
             </h2>
-            <div class="info-box">
-                <p><strong>Importante:</strong> Esta vaga requer o uso de celular próprio para as seguintes atividades. Marque as opções abaixo para confirmar que você está ciente e de acordo:</p>
-            </div>
-            <div class="checkbox-container">
+            <p class="section-description">
+                A vaga exige o uso de celular próprio para as atividades abaixo. Você está ciente e concorda?
+            </p>
+            <div class="checkbox-grid">
                 <div class="checkbox-item">
-                    <input type="checkbox" id="baterPonto">
-                    <label for="baterPonto">Bater ponto através de aplicativo no celular (registro de entrada e saída)</label>
+                    <input type="checkbox" id="baterPonto" checked>
+                    <label for="baterPonto">Bater ponto (entrada, pausa, saída) via App.</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="passarEstoque">
-                    <label for="passarEstoque">Passar estoque pelo aplicativo oficial da empresa</label>
+                    <input type="checkbox" id="passarEstoque" checked>
+                    <label for="passarEstoque">Passar estoque (contagem de produtos) via App.</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="tirarFotos">
-                    <label for="tirarFotos">Tirar fotos das bancadas/produtos com o celular próprio</label>
+                    <input type="checkbox" id="tirarFotos" checked>
+                    <label for="tirarFotos">Tirar fotos das bancadas/gôndolas (antes e depois).</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="usarAppOficial">
-                    <label for="usarAppOficial">Utilizar o aplicativo oficial da empresa para check-in nos pontos de venda</label>
+                    <input type="checkbox" id="usarAppOficial" checked>
+                    <label for="usarAppOficial">Usar app oficial da empresa para rotas e checklists.</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="comunicacaoEquipe">
-                    <label for="comunicacaoEquipe">Comunicação com a equipe via WhatsApp ou aplicativo corporativo</label>
+                    <input type="checkbox" id="comunicacaoEquipe" checked>
+                    <label for="comunicacaoEquipe">Comunicação com a equipe (Supervisor/Backoffice).</label>
                 </div>
                 <div class="checkbox-item">
-                    <input type="checkbox" id="relatorios">
-                    <label for="relatorios">Envio de relatórios e atualizações diárias através do celular</label>
+                    <input type="checkbox" id="relatorios" checked>
+                    <label for="relatorios">Enviar relatórios diários simples via App.</label>
                 </div>
             </div>
         </div>
@@ -192,41 +197,40 @@
                 Disponibilidade
             </h2>
             <div class="form-grid">
-                <div class="form-group full-width">
-                    <label for="disponibilidadeHorario">Qual sua disponibilidade de horário? *</label>
+                <div class="form-group">
+                    <label for="disponibilidadeHorario">Disponibilidade de Horário *</label>
                     <select id="disponibilidadeHorario" required>
                         <option value="">Selecione</option>
-                        <option value="integral">Período integral (8h)</option>
-                        <option value="manha">Apenas manhã</option>
-                        <option value="tarde">Apenas tarde</option>
-                        <option value="flexivel">Flexível</option>
+                        <option value="integral">Integral (Manhã e Tarde)</option>
+                        <option value="manha">Apenas Manhã</option>
+                        <option value="tarde">Apenas Tarde</option>
                     </select>
                 </div>
                 <div class="form-group full-width">
-                    <label>Dias da semana disponíveis: *</label>
+                    <label>Dias da Semana Disponíveis</label>
                     <div class="days-grid">
                         <div class="checkbox-item">
-                            <input type="checkbox" id="segunda">
+                            <input type="checkbox" id="segunda" checked>
                             <label for="segunda">Segunda</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="terca">
+                            <input type="checkbox" id="terca" checked>
                             <label for="terca">Terça</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="quarta">
+                            <input type="checkbox" id="quarta" checked>
                             <label for="quarta">Quarta</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="quinta">
+                            <input type="checkbox" id="quinta" checked>
                             <label for="quinta">Quinta</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="sexta">
+                            <input type="checkbox" id="sexta" checked>
                             <label for="sexta">Sexta</label>
                         </div>
                         <div class="checkbox-item">
-                            <input type="checkbox" id="sabado">
+                            <input type="checkbox" id="sabado" checked>
                             <label for="sabado">Sábado</label>
                         </div>
                         <div class="checkbox-item">
@@ -235,14 +239,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="form-group full-width">
-                    <label for="inicioImediato">Pode iniciar imediatamente? *</label>
+                 <div class="form-group">
+                    <label for="inicioImediato">Início Imediato? *</label>
                     <select id="inicioImediato" required>
                         <option value="">Selecione</option>
                         <option value="sim">Sim</option>
-                        <option value="15dias">Em até 15 dias</option>
-                        <option value="30dias">Em até 30 dias</option>
-                        <option value="aviso">Preciso cumprir aviso prévio</option>
+                        <option value="nao-preciso-cumprir-aviso">Não, preciso cumprir aviso</option>
+                        <option value="nao-outros">Não, outros motivos</option>
                     </select>
                 </div>
             </div>
@@ -254,8 +257,8 @@
                 Outras Informações
             </h2>
             <div class="form-grid">
-                <div class="form-group full-width">
-                    <label for="pretensoSalarial">Pretensão salarial *</label>
+                <div class="form-group">
+                    <label for="pretensoSalarial">Pretensão Salarial (CLT) *</label>
                     <input type="text" id="pretensoSalarial" placeholder="Ex: R$ 1.500,00" required>
                 </div>
                 <div class="form-group full-width">
@@ -272,15 +275,34 @@
                     <textarea id="observacoes" rows="4" placeholder="Utilize este espaço para nos contar algo mais sobre você ou sua experiência..."></textarea>
                 </div>
             </div>
-            
-            <p class="signature-disclaimer">
-                Ao enviar, o formulário será gerado em PDF para que você possa **imprimir e assinar manualmente** a declaração final.
-            </p>
         </div>
 
-
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">7</span>
+                Selfie de Verificação *
+            </h2>
+            <div class="selfie-container" id="selfie-container">
+                <p class="section-description">Para validar sua candidatura, precisamos de uma selfie. Clique abaixo para ativar sua câmera.</p>
+                
+                <button type="button" class="capture-btn" id="start-camera-btn" onclick="inicializarCamera()">
+                    Ativar Câmera
+                </button>
+                
+                <video id="video" autoplay style="display:none; width: 100%; border-radius: 8px;"></video>
+                <canvas id="canvas" style="display:none;"></canvas>
+                <button type="button" class="capture-btn" id="capture-selfie-btn" style="display:none;" onclick="capturarSelfie()">
+                    Tirar Foto
+                </button>
+                
+                <div id="selfie-preview" style="display:none;">
+                    <p style="color: #16A34A; font-weight: bold;">✅ Selfie capturada com sucesso!</p>
+                    <img id="preview-image" style="width: 150px; border-radius: 8px; margin-top: 10px;"/>
+                </div>
+            </div>
+        </div>
         <div class="submit-container">
-            <button class="submit-btn" onclick="gerarPDF()">Gerar e Enviar Candidatura</button>
+            <button class="submit-btn" onclick="gerarPDF()">Gerar e Compartilhar Candidatura</button>
             <p class="disclaimer">Ao enviar este formulário, você concorda com o tratamento dos seus dados pessoais conforme a LGPD</p>
         </div>
     </div>

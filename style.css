@@ -18,147 +18,132 @@ body {
     border-radius: 12px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     padding: 3rem;
-    position: relative; /* Ponto de referência para posicionar a logo */
+    position: relative;
 }
 
 /* ESTILO DA LOGOMARCA E CABEÇALHO */
 .logo {
-    position: center; /* Corrigido de 'center' para 'absolute' */
-    top: 3rem; /* Alinhado com o padding superior do container */
-    left: 3rem; /* Alinhado com o padding esquerdo do container */
-    max-width: 250px; /* Max-width definido pelo usuário */
-    height: auto; /* Mantém a proporção da imagem */
-    z-index: 10; 
+    /* Centraliza a logo */
+    display: block;
+    margin: 0 auto 1.5rem auto; /* Topo, Auto (Esq/Dir), Fundo */
+    max-width: 250px; 
+    height: auto; 
 }
 
 .header {
     text-align: center;
     margin-bottom: 2.5rem;
-    padding-top: 50px; /* Adiciona espaço no topo para o título não colidir com a logo */
+    /* O padding-top foi removido para a logo ficar no topo */
 }
 
 .header h1 {
+    font-size: 1.75rem;
     color: #1F2937;
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.25rem;
 }
 
 .header .subtitle {
-    color: #2563EB;
     font-size: 1.25rem;
-    font-weight: 600;
+    font-weight: 500;
+    color: #2563EB;
+    margin-bottom: 0.5rem;
 }
 
 .header p {
-    color: #6B7280;
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: #4B5563;
 }
 
+/* ESTILOS DE SEÇÃO */
 .section {
     margin-bottom: 2.5rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid #E5E7EB;
-}
-
-.section:last-of-type {
-    border-bottom: none;
+    border-top: 1px solid #E5E7EB;
+    padding-top: 2rem;
 }
 
 .section-title {
     display: flex;
     align-items: center;
     gap: 0.75rem;
-    margin-bottom: 1.5rem;
-    color: #1F2937;
     font-size: 1.25rem;
-    font-weight: 700;
+    font-weight: 600;
+    color: #2563EB;
+    margin-bottom: 1.5rem;
 }
 
 .section-number {
-    background: #2563EB;
-    color: white;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.875rem;
+    width: 30px;
+    height: 30px;
+    background: #2563EB;
+    color: white;
+    border-radius: 50%;
+    font-size: 1rem;
 }
 
+.section-description {
+    font-size: 0.9rem;
+    color: #4B5563;
+    margin-bottom: 1rem;
+}
+
+/* GRID DO FORMULÁRIO */
 .form-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
+    gap: 0.5rem;
 }
 
 .form-group.full-width {
     grid-column: 1 / -1;
 }
 
-label {
-    color: #374151;
-    font-size: 0.875rem;
+.form-group label {
+    font-size: 0.9rem;
     font-weight: 500;
-    margin-bottom: 0.5rem;
+    color: #374151;
 }
 
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="date"],
-select,
-textarea {
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="tel"],
+.form-group input[type="email"],
+.form-group select,
+.form-group textarea {
+    width: 100%;
     padding: 0.75rem;
     border: 1px solid #D1D5DB;
-    border-radius: 6px;
-    font-size: 0.875rem;
-    transition: all 0.2s;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    border-color: #2563EB;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-textarea {
-    resize: vertical;
-    font-family: inherit;
-}
-
-.cep-info {
-    font-size: 0.75rem;
-    color: #2563EB; 
-    margin-top: 0.25rem;
-}
-
-.info-box {
-    background: #EFF6FF;
-    padding: 1rem;
     border-radius: 8px;
-    margin-bottom: 1rem;
-}
-
-.info-box p {
-    color: #374151;
-    font-size: 0.875rem;
-}
-
-.checkbox-container {
+    font-size: 1rem;
     background: #F9FAFB;
-    padding: 1rem;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
+    transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* GRIDS DE CHECKBOXES */
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
 }
 
@@ -195,59 +180,77 @@ textarea {
     gap: 0.5rem;
 }
 
-/* ESTILOS DA SEÇÃO FINAL */
-/* O .declaration-text foi removido. */
-
-.signature-disclaimer {
-    font-size: 0.75rem; 
-    color: #6B7280; 
-    margin-top: 1.5rem; /* Ajuste o espaçamento no final da seção 6 */
+/* *** NOVOS ESTILOS PARA SELFIE *** */
+.selfie-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+    max-width: 400px; /* Limita a largura do vídeo */
+    margin: 0 auto;
+    padding: 1rem;
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
 }
 
+.capture-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: #3B82F6; /* Tom de azul ligeiramente mais claro */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.capture-btn:hover {
+    background: #2563EB;
+}
+
+/* ESTILOS DA SEÇÃO FINAL */
 .submit-container {
     margin-top: 2rem;
+    text-align: center;
 }
 
 .submit-btn {
     width: 100%;
     padding: 1rem;
-    background: #2563EB;
+    background: #16A34A; /* Mudei para verde para diferenciar */
     color: white;
     border: none;
     border-radius: 8px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
-    box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+    transition: background 0.2s;
 }
 
 .submit-btn:hover {
-    background: #1D4ED8;
-    box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
-}
-
-.submit-btn:active {
-    transform: translateY(1px);
+    background: #15803D;
 }
 
 .disclaimer {
-    text-align: center;
+    font-size: 0.8rem;
     color: #6B7280;
-    font-size: 0.75rem;
     margin-top: 1rem;
 }
 
+/* RESPONSIVIDADE */
 @media (max-width: 768px) {
     .container {
-        padding: 1.5rem;
+        padding: 2rem 1.5rem;
     }
 
     .form-grid {
         grid-template-columns: 1fr;
     }
 
-    .header h1 {
-        font-size: 1.5rem;
+    .checkbox-grid {
+        grid-template-columns: 1fr;
     }
 }
