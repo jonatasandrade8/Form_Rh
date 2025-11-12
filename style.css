@@ -23,17 +23,15 @@ body {
 
 /* ESTILO DA LOGOMARCA E CABEÇALHO */
 .logo {
-    /* Centraliza a logo */
     display: block;
-    margin: 0 auto 1.5rem auto; /* Topo, Auto (Esq/Dir), Fundo */
-    max-width: 250px; 
+    margin: 0 auto 1.5rem auto;
+    max-width: 150px; 
     height: auto; 
 }
 
 .header {
     text-align: center;
     margin-bottom: 2.5rem;
-    /* O padding-top foi removido para a logo ficar no topo */
 }
 
 .header h1 {
@@ -180,14 +178,14 @@ body {
     gap: 0.5rem;
 }
 
-/* *** NOVOS ESTILOS PARA SELFIE *** */
+/* ESTILOS PARA SELFIE */
 .selfie-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     width: 100%;
-    max-width: 400px; /* Limita a largura do vídeo */
+    max-width: 400px;
     margin: 0 auto;
     padding: 1rem;
     border: 1px solid #E5E7EB;
@@ -197,7 +195,7 @@ body {
 .capture-btn {
     width: 100%;
     padding: 0.8rem;
-    background: #3B82F6; /* Tom de azul ligeiramente mais claro */
+    background: #3B82F6;
     color: white;
     border: none;
     border-radius: 8px;
@@ -211,6 +209,47 @@ body {
     background: #2563EB;
 }
 
+/* ESTILOS PARA UPLOAD DE ARQUIVO (Currículo) */
+.file-input-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 8px;
+    padding: 0.5rem;
+    background: #F9FAFB;
+}
+
+.file-input-container .file-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.file-input-container .file-label {
+    padding: 0.75rem 1rem;
+    background: #4B5563;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.file-input-container .file-label:hover {
+    background: #374151;
+}
+
+.file-input-container #cv-status {
+    font-size: 0.9rem;
+    color: #6B7280;
+    font-style: italic;
+}
+
 /* ESTILOS DA SEÇÃO FINAL */
 .submit-container {
     margin-top: 2rem;
@@ -220,7 +259,7 @@ body {
 .submit-btn {
     width: 100%;
     padding: 1rem;
-    background: #16A34A; /* Mudei para verde para diferenciar */
+    background: #16A34A; /* Verde para destacar a ação final */
     color: white;
     border: none;
     border-radius: 8px;
