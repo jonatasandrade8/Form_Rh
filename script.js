@@ -328,11 +328,13 @@ function gerarPDF() {
     y = adicionarCampo(doc, 'Observações Adicionais', dados.observacoes, y, margemEsquerda, larguraPagina);
     y += 5;
     
-    // 7. DECLARAÇÃO E ASSINATURA (PARA ASSINATURA MANUAL)
-    y = adicionarSecao(doc, '7. DECLARAÇÃO E ASSINATURA', y, margemEsquerda, larguraPagina);
+    // 7. FINALIZAÇÃO DA CANDIDATURA (Apenas no PDF, para assinatura manual)
+    y = adicionarSecao(doc, '7. FINALIZAÇÃO DA CANDIDATURA', y, margemEsquerda, larguraPagina);
     
     // Texto da Declaração
     const declaracao = 'Declaro, sob as penas da lei, que todas as informações e respostas fornecidas neste formulário são verdadeiras e foram preenchidas por mim, o(a) candidato(a).';
+    doc.setFontSize(9);
+    doc.setFont(undefined, 'normal');
     y = adicionarCampo(doc, 'Declaração', declaracao, y, margemEsquerda, larguraPagina);
     y += 15; // Espaço extra para assinatura manual
 

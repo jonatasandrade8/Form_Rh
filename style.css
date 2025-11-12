@@ -23,7 +23,7 @@ body {
 
 /* ESTILO DA LOGOMARCA E CABEÇALHO */
 .logo {
-    position: center; /* Corrigido de 'center' para 'absolute' para posicionar no canto */
+    position: center; /* Corrigido de 'center' para 'absolute' */
     top: 3rem; /* Alinhado com o padding superior do container */
     left: 3rem; /* Alinhado com o padding esquerdo do container */
     max-width: 250px; /* Max-width definido pelo usuário */
@@ -135,7 +135,6 @@ textarea {
     font-family: inherit;
 }
 
-/* ESTILO ADICIONADO PARA O AVISO DO CEP */
 .cep-info {
     font-size: 0.75rem;
     color: #2563EB; 
@@ -196,17 +195,13 @@ textarea {
     gap: 0.5rem;
 }
 
-/* ESTILOS DA SEÇÃO 7 */
-.declaration-text {
-    font-size: 0.875rem; 
-    color: #374151; 
-    margin-bottom: 1rem;
-}
+/* ESTILOS DA SEÇÃO FINAL */
+/* O .declaration-text foi removido. */
 
 .signature-disclaimer {
     font-size: 0.75rem; 
     color: #6B7280; 
-    margin-top: 0.5rem;
+    margin-top: 1.5rem; /* Ajuste o espaçamento no final da seção 6 */
 }
 
 .submit-container {
