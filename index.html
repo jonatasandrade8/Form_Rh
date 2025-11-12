@@ -5,244 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulário de Recrutamento - Promotor de Vendas</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #EFF6FF 0%, #E0E7FF 100%);
-            min-height: 100vh;
-            padding: 2rem 1rem;
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 3rem;
-        }
-
-        .header {
-            text-align: center;
-            margin-bottom: 2.5rem;
-        }
-
-        .header h1 {
-            color: #1F2937;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .header .subtitle {
-            color: #2563EB;
-            font-size: 1.25rem;
-            font-weight: 600;
-        }
-
-        .header p {
-            color: #6B7280;
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-        }
-
-        .section {
-            margin-bottom: 2.5rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid #E5E7EB;
-        }
-
-        .section:last-of-type {
-            border-bottom: none;
-        }
-
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.5rem;
-            color: #1F2937;
-            font-size: 1.25rem;
-            font-weight: 700;
-        }
-
-        .section-number {
-            background: #2563EB;
-            color: white;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.875rem;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-        }
-
-        .form-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .form-group.full-width {
-            grid-column: 1 / -1;
-        }
-
-        label {
-            color: #374151;
-            font-size: 0.875rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-        }
-
-        input[type="text"],
-        input[type="email"],
-        input[type="tel"],
-        input[type="date"],
-        select,
-        textarea {
-            padding: 0.75rem;
-            border: 1px solid #D1D5DB;
-            border-radius: 6px;
-            font-size: 0.875rem;
-            transition: all 0.2s;
-        }
-
-        input:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #2563EB;
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-        }
-
-        textarea {
-            resize: vertical;
-            font-family: inherit;
-        }
-
-        .info-box {
-            background: #EFF6FF;
-            padding: 1rem;
-            border-radius: 8px;
-            margin-bottom: 1rem;
-        }
-
-        .info-box p {
-            color: #374151;
-            font-size: 0.875rem;
-        }
-
-        .checkbox-container {
-            background: #F9FAFB;
-            padding: 1rem;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .checkbox-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 0.75rem;
-            padding: 0.5rem;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .checkbox-item:hover {
-            background: #F3F4F6;
-        }
-
-        .checkbox-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-            margin-top: 2px;
-        }
-
-        .checkbox-item label {
-            margin: 0;
-            cursor: pointer;
-            flex: 1;
-        }
-
-        .days-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 0.5rem;
-        }
-
-        .submit-container {
-            margin-top: 2rem;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #2563EB;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
-        }
-
-        .submit-btn:hover {
-            background: #1D4ED8;
-            box-shadow: 0 6px 12px rgba(37, 99, 235, 0.3);
-        }
-
-        .submit-btn:active {
-            transform: translateY(1px);
-        }
-
-        .disclaimer {
-            text-align: center;
-            color: #6B7280;
-            font-size: 0.75rem;
-            margin-top: 1rem;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                padding: 1.5rem;
-            }
-
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .header h1 {
-                font-size: 1.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <div class="header">
+            <img src="./images/logo-qdelicia.png" alt="Logomarca Q Delícia Frutas" class="logo"> 
+            
             <h1>Formulário de Recrutamento e Seleção</h1>
             <p class="subtitle">Promotor de Vendas</p>
             <p>Preencha todos os campos com atenção</p>
         </div>
 
-        <!-- Seção 1: Dados Pessoais -->
         <div class="section">
             <h2 class="section-title">
                 <span class="section-number">1</span>
@@ -273,51 +47,34 @@
                     <label for="email">E-mail *</label>
                     <input type="email" id="email" required>
                 </div>
+                
+                <div class="form-group">
+                    <label for="cep">CEP *</label>
+                    <input type="text" id="cep" placeholder="00000000" required maxlength="8" onblur="buscarCEP()">
+                    <small class="cep-info">Preencha o CEP para preenchimento automático do endereço.</small>
+                </div>
+
                 <div class="form-group full-width">
                     <label for="endereco">Endereço Completo *</label>
                     <input type="text" id="endereco" placeholder="Rua, número, complemento" required>
                 </div>
-                <div class="form-group">
-                    <label for="cidade">Cidade *</label>
-                    <input type="text" id="cidade" required>
-                </div>
+                
                 <div class="form-group">
                     <label for="estado">Estado *</label>
-                    <select id="estado" required>
-                        <option value="">Selecione</option>
-                        <option value="AC">Acre</option>
-                        <option value="AL">Alagoas</option>
-                        <option value="AP">Amapá</option>
-                        <option value="AM">Amazonas</option>
-                        <option value="BA">Bahia</option>
-                        <option value="CE">Ceará</option>
-                        <option value="DF">Distrito Federal</option>
-                        <option value="ES">Espírito Santo</option>
-                        <option value="GO">Goiás</option>
-                        <option value="MA">Maranhão</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="MS">Mato Grosso do Sul</option>
-                        <option value="MG">Minas Gerais</option>
-                        <option value="PA">Pará</option>
-                        <option value="PB">Paraíba</option>
-                        <option value="PR">Paraná</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="PI">Piauí</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="RN">Rio Grande do Norte</option>
-                        <option value="RS">Rio Grande do Sul</option>
-                        <option value="RO">Rondônia</option>
-                        <option value="RR">Roraima</option>
-                        <option value="SC">Santa Catarina</option>
-                        <option value="SP">São Paulo</option>
-                        <option value="SE">Sergipe</option>
-                        <option value="TO">Tocantins</option>
+                    <select id="estado" required onchange="carregarCidades(this.value)">
+                        <option value="">Selecione o Estado</option>
+                        </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade">Cidade *</label>
+                    <select id="cidade" required>
+                        <option value="">Selecione o Estado primeiro</option>
                     </select>
                 </div>
             </div>
         </div>
 
-        <!-- Seção 2: Experiência Profissional -->
         <div class="section">
             <h2 class="section-title">
                 <span class="section-number">2</span>
@@ -347,7 +104,6 @@
             </div>
         </div>
 
-        <!-- Seção 3: Conhecimentos Técnicos -->
         <div class="section">
             <h2 class="section-title">
                 <span class="section-number">3</span>
@@ -394,7 +150,6 @@
             </div>
         </div>
 
-        <!-- Seção 4: Uso do Celular -->
         <div class="section">
             <h2 class="section-title">
                 <span class="section-number">4</span>
@@ -431,7 +186,6 @@
             </div>
         </div>
 
-        <!-- Seção 5: Disponibilidade -->
         <div class="section">
             <h2 class="section-title">
                 <span class="section-number">5</span>
@@ -494,7 +248,6 @@
             </div>
         </div>
 
-        <!-- Seção 6: Outras Informações -->
         <div class="section">
             <h2 class="section-title">
                 <span class="section-number">6</span>
@@ -520,166 +273,28 @@
                 </div>
             </div>
         </div>
+        
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">7</span>
+                Declaração e Assinatura
+            </h2>
+            <div class="form-group full-width">
+                <p class="declaration-text">
+                    Declaro, sob as penas da lei, que todas as informações e respostas fornecidas neste formulário são verdadeiras e foram preenchidas por mim, o(a) candidato(a).
+                </p>
+                <p class="signature-disclaimer">
+                    Ao enviar, o formulário será gerado em PDF para que você possa **imprimir e assinar manualmente**.
+                </p>
+            </div>
+        </div>
 
-        <!-- Botão de Envio -->
         <div class="submit-container">
-            <button class="submit-btn" onclick="gerarPDF()">Enviar Candidatura</button>
+            <button class="submit-btn" onclick="gerarPDF()">Gerar e Enviar Candidatura</button>
             <p class="disclaimer">Ao enviar este formulário, você concorda com o tratamento dos seus dados pessoais conforme a LGPD</p>
         </div>
     </div>
 
-    <script>
-        function gerarPDF() {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            
-            // Coletar dados do formulário
-            const dados = {
-                nomeCompleto: document.getElementById('nomeCompleto').value,
-                dataNascimento: document.getElementById('dataNascimento').value,
-                cpf: document.getElementById('cpf').value,
-                rg: document.getElementById('rg').value,
-                telefone: document.getElementById('telefone').value,
-                email: document.getElementById('email').value,
-                endereco: document.getElementById('endereco').value,
-                cidade: document.getElementById('cidade').value,
-                estado: document.getElementById('estado').value,
-                experienciaPromocao: document.getElementById('experienciaPromocao').value,
-                tempoExperiencia: document.getElementById('tempoExperiencia').value,
-                empresasAnteriores: document.getElementById('empresasAnteriores').value,
-                motivoSaida: document.getElementById('motivoSaida').value,
-                temCelularProprio: document.getElementById('temCelularProprio').value,
-                conheceAppEstoque: document.getElementById('conheceAppEstoque').value,
-                facilidadeTecnologia: document.getElementById('facilidadeTecnologia').value,
-                possuiVeiculo: document.getElementById('possuiVeiculo').value,
-                baterPonto: document.getElementById('baterPonto').checked,
-                passarEstoque: document.getElementById('passarEstoque').checked,
-                tirarFotos: document.getElementById('tirarFotos').checked,
-                usarAppOficial: document.getElementById('usarAppOficial').checked,
-                comunicacaoEquipe: document.getElementById('comunicacaoEquipe').checked,
-                relatorios: document.getElementById('relatorios').checked,
-                disponibilidadeHorario: document.getElementById('disponibilidadeHorario').value,
-                segunda: document.getElementById('segunda').checked,
-                terca: document.getElementById('terca').checked,
-                quarta: document.getElementById('quarta').checked,
-                quinta: document.getElementById('quinta').checked,
-                sexta: document.getElementById('sexta').checked,
-                sabado: document.getElementById('sabado').checked,
-                domingo: document.getElementById('domingo').checked,
-                inicioImediato: document.getElementById('inicioImediato').value,
-                pretensoSalarial: document.getElementById('pretensoSalarial').value,
-                conheceProdutos: document.getElementById('conheceProdutos').value,
-                observacoes: document.getElementById('observacoes').value
-            };
-
-            // Configuração do PDF
-            let y = 20;
-            const margemEsquerda = 20;
-            const larguraPagina = 170;
-
-            // Cabeçalho
-            doc.setFillColor(37, 99, 235);
-            doc.rect(0, 0, 210, 40, 'F');
-            doc.setTextColor(255, 255, 255);
-            doc.setFontSize(22);
-            doc.setFont(undefined, 'bold');
-            doc.text('FORMULÁRIO DE CANDIDATURA', 105, 20, { align: 'center' });
-            doc.setFontSize(14);
-            doc.text('Promotor de Vendas', 105, 30, { align: 'center' });
-            
-            y = 50;
-            doc.setTextColor(0, 0, 0);
-
-            // Função auxiliar para adicionar seção
-            function adicionarSecao(titulo, yPos) {
-                if (yPos > 270) {
-                    doc.addPage();
-                    return 20;
-                }
-                doc.setFillColor(37, 99, 235);
-                doc.rect(margemEsquerda, yPos, larguraPagina, 8, 'F');
-                doc.setTextColor(255, 255, 255);
-                doc.setFontSize(12);
-                doc.setFont(undefined, 'bold');
-                doc.text(titulo, margemEsquerda + 2, yPos + 5.5);
-                doc.setTextColor(0, 0, 0);
-                return yPos + 12;
-            }
-
-            // Função auxiliar para adicionar campo
-            function adicionarCampo(label, valor, yPos) {
-                if (yPos > 270) {
-                    doc.addPage();
-                    yPos = 20;
-                }
-                doc.setFontSize(9);
-                doc.setFont(undefined, 'bold');
-                doc.text(label + ':', margemEsquerda, yPos);
-                doc.setFont(undefined, 'normal');
-                const texto = valor || 'Não informado';
-                const linhas = doc.splitTextToSize(texto, larguraPagina - 10);
-                doc.text(linhas, margemEsquerda, yPos + 4);
-                return yPos + 4 + (linhas.length * 4);
-            }
-
-            // 1. DADOS PESSOAIS
-            y = adicionarSecao('1. DADOS PESSOAIS', y);
-            y = adicionarCampo('Nome Completo', dados.nomeCompleto, y);
-            y = adicionarCampo('Data de Nascimento', dados.dataNascimento, y);
-            y = adicionarCampo('CPF', dados.cpf, y);
-            y = adicionarCampo('RG', dados.rg, y);
-            y = adicionarCampo('Telefone/WhatsApp', dados.telefone, y);
-            y = adicionarCampo('E-mail', dados.email, y);
-            y = adicionarCampo('Endereço', dados.endereco, y);
-            y = adicionarCampo('Cidade', dados.cidade, y);
-            y = adicionarCampo('Estado', dados.estado, y);
-            y += 5;
-
-            // 2. EXPERIÊNCIA PROFISSIONAL
-            y = adicionarSecao('2. EXPERIÊNCIA PROFISSIONAL', y);
-            y = adicionarCampo('Experiência como Promotor', dados.experienciaPromocao, y);
-            y = adicionarCampo('Tempo de Experiência', dados.tempoExperiencia, y);
-            y = adicionarCampo('Empresas Anteriores', dados.empresasAnteriores, y);
-            y = adicionarCampo('Motivo da Saída', dados.motivoSaida, y);
-            y += 5;
-
-            // 3. CONHECIMENTOS TÉCNICOS
-            y = adicionarSecao('3. CONHECIMENTOS TÉCNICOS', y);
-            y = adicionarCampo('Possui Celular Próprio', dados.temCelularProprio, y);
-            y = adicionarCampo('Conhece App de Estoque', dados.conheceAppEstoque, y);
-            y = adicionarCampo('Facilidade com Tecnologia', dados.facilidadeTecnologia, y);
-            y = adicionarCampo('Possui Veículo', dados.possuiVeiculo, y);
-            y += 5;
-
-            // 4. USO DO CELULAR
-            if (y > 250) {
-                doc.addPage();
-                y = 20;
-            }
-            y = adicionarSecao('4. ATIVIDADES COM CELULAR', y);
-            const atividades = [];
-            if (dados.baterPonto) atividades.push('✓ Bater ponto');
-            if (dados.passarEstoque) atividades.push('✓ Passar estoque');
-            if (dados.tirarFotos) atividades.push('✓ Tirar fotos das bancadas');
-            if (dados.usarAppOficial) atividades.push('✓ Usar app oficial');
-            if (dados.comunicacaoEquipe) atividades.push('✓ Comunicação com equipe');
-            if (dados.relatorios) atividades.push('✓ Enviar relatórios');
-            
-            doc.setFontSize(9);
-            doc.setFont(undefined, 'normal');
-            atividades.forEach(ativ => {
-                y = adicionarCampo('', ativ, y);
-            });
-            y += 5;
-
-            // 5. DISPONIBILIDADE
-            y = adicionarSecao('5. DISPONIBILIDADE', y);
-            y = adicionarCampo('Disponibilidade de Horário', dados.disponibilidadeHorario, y);
-            
-            const diasDisponiveis = [];
-            if (dados.segunda) diasDisponiveis.push('Segunda');
-            if (dados.terca) diasDisponiveis.push('Terça');
-            if (dados.quarta) diasDisponiveis.push('Quarta');
-            if (dados.quinta) diasDisponiveis.push('Quinta');
-            if (dados.sexta) diasDisponiveis.push('Sexta');
-            if (dados.sabado) diasDisponiveis
+    <script src="script.js"></script>
+</body>
+</html>
