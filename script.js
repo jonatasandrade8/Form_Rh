@@ -1,5 +1,5 @@
-// ⚠️ IMPORTANTE: Substitua esta string pela string Base64 real da sua logomarca
-const LOGO_BASE64 = '';
+
+const LOGO_BASE64 = './images/logo-qdelicia.png';
 
 // Lista de UFs (Estados)
 const UFS = [
@@ -273,8 +273,8 @@ async function gerarPDF() {
 
     // --- COLUNA 1 ---
     y1 = adicionarSecao(doc, '1. DADOS PESSOAIS', y1, col1X, colWidth);
-    y1 = adicionarCampo(doc, 'Nome', dados.nomeCompleto, y1, col1X, colWidth);
-    y1 = adicionarCampo(doc, 'Nascimento', dados.dataNascimento, y1, col1X, colWidth);
+    y1 = adicionarCampo(doc, 'Nome Completo', dados.nomeCompleto, y1, col1X, colWidth);
+    y1 = adicionarCampo(doc, 'Data de Nascimento', dados.dataNascimento, y1, col1X, colWidth);
     y1 = adicionarCampo(doc, 'CPF', dados.cpf, y1, col1X, colWidth);
     y1 = adicionarCampo(doc, 'RG', dados.rg, y1, col1X, colWidth);
     y1 = adicionarCampo(doc, 'Telefone', dados.telefone, y1, col1X, colWidth);
@@ -285,20 +285,20 @@ async function gerarPDF() {
     y1 += 3;
 
     y1 = adicionarSecao(doc, '2. EXPERIÊNCIA', y1, col1X, colWidth);
-    y1 = adicionarCampo(doc, 'Experiência', dados.experienciaPromocao, y1, col1X, colWidth);
-    y1 = adicionarCampo(doc, 'Tempo', dados.tempoExperiencia, y1, col1X, colWidth);
-    y1 = adicionarCampo(doc, 'Empresas', dados.empresasAnteriores, y1, col1X, colWidth);
-    y1 = adicionarCampo(doc, 'Motivo Saída', dados.motivoSaida, y1, col1X, colWidth);
+    y1 = adicionarCampo(doc, 'Experiência como promotor', dados.experienciaPromocao, y1, col1X, colWidth);
+    y1 = adicionarCampo(doc, 'Tempo de experiência', dados.tempoExperiencia, y1, col1X, colWidth);
+    y1 = adicionarCampo(doc, 'Empresas que trabalhou', dados.empresasAnteriores, y1, col1X, colWidth);
+    y1 = adicionarCampo(doc, 'Motivo da Saída', dados.motivoSaida, y1, col1X, colWidth);
     y1 += 3;
 
     y1 = adicionarSecao(doc, '3. CONHECIMENTOS', y1, col1X, colWidth);
     y1 = adicionarCampo(doc, 'Celular', dados.temCelularProprio, y1, col1X, colWidth);
-    y1 = adicionarCampo(doc, 'Apps Estoque', dados.conheceAppEstoque, y1, col1X, colWidth);
-    y1 = adicionarCampo(doc, 'Tecnologia', dados.facilidadeTecnologia, y1, col1X, colWidth);
-    y1 = adicionarCampo(doc, 'Veículo', dados.possuiVeiculo, y1, col1X, colWidth);
+    y1 = adicionarCampo(doc, 'Conhece Apps de Estoque', dados.conheceAppEstoque, y1, col1X, colWidth);
+    y1 = adicionarCampo(doc, 'COnhecimento de Tecnologia', dados.facilidadeTecnologia, y1, col1X, colWidth);
+    y1 = adicionarCampo(doc, 'Possui veículo próprio', dados.possuiVeiculo, y1, col1X, colWidth);
 
     // --- COLUNA 2 ---
-    y2 = adicionarSecao(doc, '4. ATIVIDADES (CELULAR)', y2, col2X, colWidth);
+    y2 = adicionarSecao(doc, '4. USO DE CELULAR PRÓPRIO PARA:', y2, col2X, colWidth);
     const atividades = [];
     if (dados.baterPonto) atividades.push('✓ Bater ponto');
     if (dados.passarEstoque) atividades.push('✓ Passar estoque');
@@ -310,7 +310,7 @@ async function gerarPDF() {
     y2 += 3;
 
     y2 = adicionarSecao(doc, '5. DISPONIBILIDADE', y2, col2X, colWidth);
-    y2 = adicionarCampo(doc, 'Horário', dados.disponibilidadeHorario, y2, col2X, colWidth);
+    y2 = adicionarCampo(doc, 'Horário disponível', dados.disponibilidadeHorario, y2, col2X, colWidth);
     const dias = [];
     if (dados.segunda) dias.push('Seg');
     if (dados.terca) dias.push('Ter');
@@ -319,13 +319,13 @@ async function gerarPDF() {
     if (dados.sexta) dias.push('Sex');
     if (dados.sabado) dias.push('Sáb');
     if (dados.domingo) dias.push('Dom');
-    y2 = adicionarCampo(doc, 'Dias', dias.length > 0 ? dias.join(', ') : 'Nenhum selecionado', y2, col2X, colWidth);
-    y2 = adicionarCampo(doc, 'Início', dados.inicioImediato, y2, col2X, colWidth);
+    y2 = adicionarCampo(doc, 'Dias disponíveis', dias.length > 0 ? dias.join(', ') : 'Nenhum selecionado', y2, col2X, colWidth);
+    y2 = adicionarCampo(doc, 'Disponibilidade para Início Imediato', dados.inicioImediato, y2, col2X, colWidth);
     y2 += 3;
 
     y2 = adicionarSecao(doc, '6. OUTRAS INFORMAÇÕES', y2, col2X, colWidth);
-    y2 = adicionarCampo(doc, 'Pretensão', dados.pretensoSalarial, y2, col2X, colWidth);
-    y2 = adicionarCampo(doc, 'Conhece Produtos', dados.conheceProdutos, y2, col2X, colWidth);
+    y2 = adicionarCampo(doc, 'Pretensão Salarial', dados.pretensoSalarial, y2, col2X, colWidth);
+    y2 = adicionarCampo(doc, 'Conhece os Produtos que irá promover?', dados.conheceProdutos, y2, col2X, colWidth);
     y2 = adicionarCampo(doc, 'Observações', dados.observacoes, y2, col2X, colWidth);
     y2 += 3;
     
@@ -344,7 +344,7 @@ async function gerarPDF() {
     
     yFinal = adicionarSecao(doc, '8. FINALIZAÇÃO DA CANDIDATURA', yFinal, col1X, larguraTotal);
     
-    const declaracao = 'Declaro, sob as penas da lei, que todas as informações e respostas fornecidas neste formulário são verdadeiras e foram preenchidas por mim, o(a) candidato(a).';
+    const declaracao = 'Declaro, que todas as informações e respostas fornecidas neste formulário são verdadeiras e foram preenchidas por mim, o(a) candidato(a).';
     doc.setFontSize(8);
     doc.setFont(undefined, 'normal');
     yFinal = adicionarCampo(doc, 'Declaração', declaracao, yFinal, col1X, larguraTotal);
