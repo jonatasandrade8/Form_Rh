@@ -44,60 +44,61 @@ body {
     font-size: 1.25rem;
     font-weight: 500;
     color: #2563EB;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
 }
 
 .header p {
+    color: #6B7280;
     font-size: 1rem;
-    color: #4B5563;
 }
 
-/* ESTILOS DE SEÇÃO */
+/* ESTILO DAS SEÇÕES E TÍTULOS */
 .section {
-    margin-bottom: 2.5rem;
-    border-top: 1px solid #E5E7EB;
-    padding-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    border: 1px solid #E5E7EB;
+    border-radius: 10px;
+    background: #F9FAFB;
 }
 
 .section-title {
+    font-size: 1.25rem;
+    color: #1F2937;
+    margin-bottom: 1.5rem;
     display: flex;
     align-items: center;
-    gap: 0.75rem;
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: #2563EB;
-    margin-bottom: 1.5rem;
 }
 
 .section-number {
     display: inline-flex;
-    align-items: center;
     justify-content: center;
-    width: 30px;
-    height: 30px;
+    align-items: center;
+    width: 25px;
+    height: 25px;
     background: #2563EB;
     color: white;
     border-radius: 50%;
-    font-size: 1rem;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin-right: 10px;
 }
 
 .section-description {
-    font-size: 0.9rem;
     color: #4B5563;
+    font-size: 0.95rem;
     margin-bottom: 1rem;
 }
 
-/* GRID DO FORMULÁRIO */
+/* ESTILO DO GRID DO FORMULÁRIO */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
+    gap: 1.5rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
 }
 
 .form-group.full-width {
@@ -106,80 +107,37 @@ body {
 
 .form-group label {
     font-size: 0.9rem;
-    font-weight: 500;
     color: #374151;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
 }
 
-.form-group input[type="text"],
-.form-group input[type="date"],
-.form-group input[type="tel"],
-.form-group input[type="email"],
+.form-group input,
 .form-group select,
 .form-group textarea {
-    width: 100%;
     padding: 0.75rem;
     border: 1px solid #D1D5DB;
-    border-radius: 8px;
+    border-radius: 6px;
     font-size: 1rem;
-    background: #F9FAFB;
-    transition: border 0.2s, box-shadow 0.2s;
+    color: #1F2937;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    background-color: white;
 }
 
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
     border-color: #2563EB;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
     outline: none;
 }
 
 .form-group textarea {
     resize: vertical;
-    min-height: 80px;
 }
 
-/* GRIDS DE CHECKBOXES */
-.checkbox-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.75rem;
-}
-
-.checkbox-item {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding: 0.5rem;
-    border-radius: 6px;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.checkbox-item:hover {
-    background: #F3F4F6;
-}
-
-.checkbox-item input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    cursor: pointer;
-    margin-top: 2px;
-}
-
-.checkbox-item label {
-    margin: 0;
-    cursor: pointer;
-    flex: 1;
-}
-
-.days-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 0.5rem;
-}
-
-/* ESTILOS PARA SELFIE */
-.selfie-container {
+/* ESTILOS DA CÂMERA/SELFIE */
+.camera-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -188,66 +146,44 @@ body {
     max-width: 400px;
     margin: 0 auto;
     padding: 1rem;
-    border: 1px solid #E5E7EB;
+    border: 1px dashed #D1D5DB;
     border-radius: 8px;
+    background-color: #FEF3C7; 
 }
 
-.capture-btn {
+#video {
     width: 100%;
-    padding: 0.8rem;
-    background: #3B82F6;
-    color: white;
+    max-width: 480px;
+    height: auto;
+    border-radius: 8px;
+    background: #000;
+}
+
+.camera-container button {
+    padding: 0.75rem 1.5rem;
     border: none;
-    border-radius: 8px;
-    font-size: 0.9rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background 0.2s;
-}
-
-.capture-btn:hover {
-    background: #2563EB;
-}
-
-/* ESTILOS PARA UPLOAD DE ARQUIVO (Currículo) */
-.file-input-container {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    border: 1px solid #D1D5DB;
-    border-radius: 8px;
-    padding: 0.5rem;
-    background: #F9FAFB;
-}
-
-.file-input-container .file-input {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
-}
-
-.file-input-container .file-label {
-    padding: 0.75rem 1rem;
-    background: #4B5563;
-    color: white;
     border-radius: 6px;
+    font-weight: 600;
     cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 500;
-    transition: background 0.2s;
+    transition: background-color 0.2s;
 }
 
-.file-input-container .file-label:hover {
-    background: #374151;
+#start-camera-btn {
+    background: #10B981;
+    color: white;
 }
 
-.file-input-container #cv-status {
-    font-size: 0.9rem;
-    color: #6B7280;
-    font-style: italic;
+#start-camera-btn:hover {
+    background: #059669;
+}
+
+#capture-selfie-btn {
+    background: #F59E0B;
+    color: white;
+}
+
+#capture-selfie-btn:hover {
+    background: #D97706;
 }
 
 /* ESTILOS DA SEÇÃO FINAL */
@@ -259,18 +195,18 @@ body {
 .submit-btn {
     width: 100%;
     padding: 1rem;
-    background: #16A34A; /* Verde para destacar a ação final */
+    background: #2563EB;
     color: white;
     border: none;
     border-radius: 8px;
-    font-size: 1rem;
-    font-weight: 600;
+    font-size: 1.1rem;
+    font-weight: 700;
     cursor: pointer;
     transition: background 0.2s;
 }
 
 .submit-btn:hover {
-    background: #15803D;
+    background: #1D4ED8;
 }
 
 .disclaimer {
@@ -279,17 +215,25 @@ body {
     margin-top: 1rem;
 }
 
-/* RESPONSIVIDADE */
+/* Media Query para telas menores */
 @media (max-width: 768px) {
     .container {
-        padding: 2rem 1.5rem;
+        padding: 1.5rem;
     }
 
     .form-grid {
         grid-template-columns: 1fr;
     }
 
-    .checkbox-grid {
-        grid-template-columns: 1fr;
+    .header h1 {
+        font-size: 1.5rem;
+    }
+
+    .header .subtitle {
+        font-size: 1rem;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
     }
 }
