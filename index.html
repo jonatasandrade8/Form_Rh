@@ -31,41 +31,61 @@
                     <input type="text" id="nomeCompleto" required>
                 </div>
                 <div class="form-group">
-                    <label for="dataNascimento">Data de Nascimento *</label>
-                    <input type="date" id="dataNascimento" required>
+                    <label for="dataNascimento">Data de Nascimento (DD/MM/AAAA) *</label>
+                    <input type="text" id="dataNascimento" placeholder="DD/MM/AAAA" maxlength="10" required>
                 </div>
                <div class="form-group">
                     <label for="cpf">CPF *</label>
-                    <input type="text" id="cpf" placeholder="000.000.000-00" required>
+                    <input type="text" id="cpf" placeholder="000.000.000-00" maxlength="14" required>
                 </div>
                 <div class="form-group">
-                    <label for="rg">RG *</label>
-                    <input type="text" id="rg" required>
+                    <label for="rg">RG</label>
+                    <input type="text" id="rg" placeholder="Ex: 00.000.000-0" maxlength="12">
                 </div>
                 <div class="form-group">
-                    <label for="telefone">Telefone (WhatsApp) *</label>
-                    <input type="tel" id="telefone" placeholder="(00) 90000-0000" required>
+                    <label for="telefone">Telefone *</label>
+                    <input type="tel" id="telefone" placeholder="(00) 00000-0000" maxlength="15" required>
                 </div>
-                <div class="form-group full-width">
+                <div class="form-group">
                     <label for="email">E-mail *</label>
                     <input type="email" id="email" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="cep">CEP * (Preenchimento automático de Endereço/Cidade/Estado)</label>
-                    <input type="text" id="cep" placeholder="00000-000" required onblur="consultarCEP(this.value)">
+                    <label for="cep">CEP * (Auto-preenchimento de Endereço)</label>
+                    <input type="text" id="cep" placeholder="00000-000" maxlength="9" required>
                 </div>
                 <div class="form-group full-width">
-                    <label for="endereco">Endereço *</label>
+                    <label for="endereco">Endereço Completo * (Rua, Número, Bairro)</label>
                     <input type="text" id="endereco" required>
                 </div>
                 <div class="form-group">
                     <label for="cidade">Cidade *</label>
-                    <input type="text" id="cidade" required>
+                    <input type="text" id="cidade" required readonly> 
                 </div>
                 <div class="form-group">
-                    <label for="estado">Estado *</label>
-                    <input type="text" id="estado" required>
+                    <label for="estado">Estado (UF) *</label>
+                    <input type="text" id="estado" maxlength="2" required readonly>
+                </div>
+
+                <div class="form-group">
+                    <label for="genero">Gênero</label>
+                    <select id="genero">
+                        <option value="">Selecione</option>
+                        <option value="Feminino">Feminino</option>
+                        <option value="Masculino">Masculino</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="statusCivil">Estado Civil</label>
+                    <select id="statusCivil">
+                        <option value="">Selecione</option>
+                        <option value="Solteiro(a)">Solteiro(a)</option>
+                        <option value="Casado(a)">Casado(a)</option>
+                        <option value="Divorciado(a)">Divorciado(a)</option>
+                        <option value="Viúvo(a)">Viúvo(a)</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -76,25 +96,27 @@
                 Experiência Profissional
             </h2>
             <div class="form-grid">
-                <div class="form-group">
-                    <label for="experienciaPromocao">Possui experiência como Promotor(a) de Vendas? *</label>
+                <div class="form-group full-width">
+                    <label for="experienciaPromocao">Você possui experiência como promotor de vendas? *</label>
                     <select id="experienciaPromocao" required>
                         <option value="">Selecione</option>
-                        <option value="sim">Sim</option>
-                        <option value="nao">Não</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
                     </select>
                 </div>
+                
                 <div class="form-group">
-                    <label for="tempoExperiencia">Tempo total de experiência (meses) *</label>
-                    <input type="number" id="tempoExperiencia" min="0" required>
+                    <label for="tempoExperiencia">Tempo de Experiência em Promoção (Anos em Média) *</label>
+                    <input type="number" id="tempoExperiencia" placeholder="Ex: 2" min="0" required>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="empresasAnteriores">Empresas anteriores</label>
+                    <input type="text" id="empresasAnteriores" placeholder="Nome da(s) última(s) empresa(s)">
                 </div>
                 <div class="form-group full-width">
-                    <label for="empresasAnteriores">Últimas 2 empresas no ramo de promoção/reposição</label>
-                    <textarea id="empresasAnteriores" rows="2" placeholder="Nome da empresa, período, principais atividades."></textarea>
-                </div>
-                <div class="form-group full-width">
-                    <label for="motivoSaida">Motivo da saída/busca por nova oportunidade</label>
-                    <textarea id="motivoSaida" rows="2"></textarea>
+                    <label for="motivoSaida">Motivo da Saída do último emprego</label>
+                    <input type="text" id="motivoSaida">
                 </div>
             </div>
         </div>
@@ -105,38 +127,41 @@
                 Conhecimentos e Habilidades
             </h2>
             <div class="form-grid">
-                <div class="form-group">
-                    <label for="temCelularProprio">Possui celular próprio com acesso à internet e GPS? *</label>
+                <div class="form-group full-width">
+                    <label for="temCelularProprio">Você possui celular próprio para trabalho? *</label>
                     <select id="temCelularProprio" required>
                         <option value="">Selecione</option>
-                        <option value="sim">Sim</option>
-                        <option value="nao">Não</option>
+                        <option value="Sim">Sim</option>
+                        <option value="Não">Não</option>
+                    </select>
+                </div>
+                <div class="form-group full-width">
+                    <label for="temMoto">Você possui motocicleta ou outro veículo para deslocamento?</label>
+                    <select id="temMoto">
+                        <option value="">Selecione</option>
+                        <option value="Sim - Moto">Sim (Motocicleta)</option>
+                        <option value="Sim - Carro">Sim (Carro)</option>
+                        <option value="Não">Não</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="temCNH">Possui CNH (Carteira Nacional de Habilitação)? *</label>
-                    <select id="temCNH" required>
+                    <label for="cnh">Você possui CNH?</label>
+                    <select id="cnh">
                         <option value="">Selecione</option>
-                        <option value="sim">Sim</option>
-                        <option value="nao">Não</option>
+                        <option value="A">A</option>
+                        <option value="B">B</option>
+                        <option value="AB">AB</option>
+                        <option value="Não">Não</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="possuiMoto">Possui moto própria?</label>
-                    <select id="possuiMoto">
+                    <label for="conhecimentoPromocao">Nível de conhecimento em promoção de vendas *</label>
+                    <select id="conhecimentoPromocao" required>
                         <option value="">Selecione</option>
-                        <option value="sim">Sim</option>
-                        <option value="nao">Não</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="conheceRegiao">Conhece bem a região/cidade de atuação? *</label>
-                    <select id="conheceRegiao" required>
-                        <option value="">Selecione</option>
-                        <option value="10">10 (Muito bem)</option>
-                        <option value="7-9">7-9 (Satisfatoriamente)</option>
-                        <option value="4-6">4-6 (Mais ou menos)</option>
-                        <option value="1-3">1-3 (Pouco, mas aprendo rápido)</option>
+                        <option value="Avançado">Avançado</option>
+                        <option value="Intermediário">Intermediário</option>
+                        <option value="Básico">Básico</option>
+                        <option value="Nenhum, mas aprendo rápido">Nenhum, mas aprendo rápido</option>
                     </select>
                 </div>
                 <div class="form-group">
@@ -150,89 +175,86 @@
                         <option value="0-2">0-2 (Pouca ou nenhuma)</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="trabalhoEmEquipe">Trabalho em equipe (0 a 10) *</label>
-                    <select id="trabalhoEmEquipe" required>
-                        <option value="">Selecione</option>
-                        <option value="10">10 (Excelente)</option>
-                        <option value="8-9">8-9 (Muito bom)</option>
-                        <option value="6-7">6-7 (Bom)</option>
-                        <option value="4-5">4-5 (Regular)</option>
-                        <option value="0-3">0-3 (Preciso melhorar)</option>
-                    </select>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2 class="section-title">
-                <span class="section-number">4</span>
-                Disponibilidade e Expectativa
-            </h2>
-            <div class="form-grid">
-                <div class="form-group">
-                    <label for="disponibilidade">Disponibilidade de início imediato? *</label>
-                    <select id="disponibilidade" required>
-                        <option value="">Selecione</option>
-                        <option value="sim">Sim, imediato</option>
-                        <option value="1semana">Em 1 semana</option>
-                        <option value="15dias">Em até 15 dias</option>
-                        <option value="30dias">Mais de 30 dias</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="turnoTrabalho">Preferência de Turno *</label>
-                    <select id="turnoTrabalho" required>
-                        <option value="">Selecione</option>
-                        <option value="comercial">Horário Comercial</option>
-                        <option value="flexivel">Flexível/A Combinar</option>
-                    </select>
-                </div>
-                <div class="form-group full-width">
-                    <label for="expectativaSalario">Qual a sua expectativa de remuneração (Salário + Benefícios)? *</label>
-                    <input type="text" id="expectativaSalario" placeholder="Ex: R$ 2.000,00" required>
-                </div>
             </div>
         </div>
 
         <div class="section">
             <h2 class="section-title">
+                <span class="section-number">4</span>
+                Disponibilidade
+            </h2>
+            <p class="section-description">Selecione sua disponibilidade principal.</p>
+            <div class="form-grid">
+                <div class="form-group full-width checkbox-group">
+                    <input type="checkbox" id="dispSegundaASabado" name="disponibilidade" value="Segunda a Sábado" required>
+                    <label for="dispSegundaASabado">Segunda a Sábado</label>
+                </div>
+            </div>
+
+            <div class="form-group full-width">
+                <label for="turnoDisponivel">Turno de Disponibilidade *</label>
+                <select id="turnoDisponivel" required>
+                    <option value="">Selecione</option>
+                    <option value="Manhã">Manhã</option>
+                    <option value="Tarde">Tarde</option>
+                    <option value="Integral">Integral</option>
+                </select>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2 class="section-title">
                 <span class="section-number">5</span>
-                Referência
+                Informações Adicionais
             </h2>
             <div class="form-group full-width">
-                <label for="referencia">Como você soube da vaga?</label>
-                <input type="text" id="referencia" placeholder="Ex: Site de vagas, Amigo, etc.">
+                <label for="expectativaSalarial">Expectativa Salarial (Mensal) *</label>
+                <input type="text" id="expectativaSalarial" placeholder="R$ 0.000,00" required>
+            </div>
+            <div class="form-group full-width">
+                <label for="comoConheceu">Como conheceu a vaga? *</label>
+                <select id="comoConheceu" required>
+                    <option value="">Selecione</option>
+                    <option value="Indicação de Colaborador">Indicação de Colaborador</option>
+                    <option value="Sites de Emprego">Sites de Emprego (Ex: Gupy, InfoJobs)</option>
+                    <option value="Redes Sociais">Redes Sociais (Ex: LinkedIn, Facebook)</option>
+                    <option value="Outros">Outros</option>
+                </select>
+            </div>
+            <div class="form-group full-width">
+                <label for="observacoes">Observações ou informações adicionais</label>
+                <textarea id="observacoes" rows="4" placeholder="Utilize este espaço para nos contar algo mais sobre você ou sua experiência."></textarea>
             </div>
         </div>
 
         <div class="section">
             <h2 class="section-title">
                 <span class="section-number">6</span>
-                Observações Adicionais
+                Termo de Responsabilidade
             </h2>
-            <div class="form-group full-width">
-                <label for="observacoes">Informações adicionais</label>
-                <textarea id="observacoes" rows="4" placeholder="Utilize este espaço para nos contar algo mais sobre você ou sua experiência..."></textarea>
+            <p class="section-description">
+                Declaro que as informações fornecidas neste formulário são verdadeiras e que a selfie anexada é minha, tirada no momento do preenchimento. Estou ciente de que informações falsas podem invalidar minha candidatura.
+            </p>
+
+            <div class="form-group full-width checkbox-group">
+                <input type="checkbox" id="aceitoTermos" required>
+                <label for="aceitoTermos">Li e aceito o termo acima *</label>
             </div>
         </div>
-        
+
         <div class="section">
             <h2 class="section-title">
                 <span class="section-number">7</span>
                 Selfie
             </h2>
-            <p class="section-description">
-                Para fins de identificação no processo seletivo, por favor, tire uma selfie (foto de rosto) agora.
-            </p>
-            <div class="camera-container">
-                <video id="video" autoplay style="display:none;"></video>
-                <canvas id="canvas" style="display:none;"></canvas>
-                
+            <p class="section-description">É obrigatório anexar uma selfie para confirmar sua identidade. Clique no botão abaixo para iniciar a câmera e tirar sua foto.</p>
+            
+            <div class="selfie-container">
+                <video id="video" width="480" height="360" autoplay style="display:none;"></video>
                 <button id="start-camera-btn" onclick="inicializarCamera()">
-                    Ligar Câmera
+                    Iniciar Câmera
                 </button>
-
+                <canvas id="canvas" width="480" height="360" style="display:none;"></canvas>
                 <button id="capture-selfie-btn" style="display:none;" onclick="capturarSelfie()">
                     Tirar Foto
                 </button>
@@ -243,7 +265,6 @@
                 </div>
             </div>
         </div>
-
 
         <div class="submit-container">
             <button class="submit-btn" onclick="gerarPDF()">Gerar e Compartilhar Candidatura</button>
