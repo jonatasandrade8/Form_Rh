@@ -12,19 +12,6 @@ let selfieBase64 = null;
 let videoStream = null;
 let cvPdfBytes = null; // Armazena os bytes do PDF do currículo
 
-
-// Formatar data de nascimento com barras automáticas
-function formatarDataNascimento(input) {
-    let value = input.value.replace(/\D/g, '');
-    if (value.length >= 2) {
-        value = value.substring(0, 2) + '/' + value.substring(2);
-    }
-    if (value.length >= 5) {
-        value = value.substring(0, 5) + '/' + value.substring(5, 9);
-    }
-    input.value = value;
-}
-
 // --- Lógica de Endereçamento (ViaCEP) ---
 
 async function buscarCEP() {
@@ -46,7 +33,7 @@ async function buscarCEP() {
         document.getElementById('endereco').value = data.logradouro || '';
         const estadoSelect = document.getElementById('estado');
         estadoSelect.value = data.uf || '';
-        document.getElementById('cidade').value = data.localidade || '';
+        carregarCidades(data.uf, data.localidade);
     } catch (error) {
         console.error('Erro ao buscar CEP:', error);
         alert('Erro de comunicação. Preencha manualmente.');
@@ -59,9 +46,32 @@ function limparCamposEndereco(limparTudo) {
         document.getElementById('endereco').value = '';
     }
     document.getElementById('estado').value = '';
-    document.getElementById('cidade').value = '';
+    const cidadeSelect = document.getElementById('cidade');
+    cidadeSelect.innerHTML = '<option value="">Selecione o Estado primeiro</option>';
 }
 
+function carregarCidades(uf, cidadePreencher = '') {
+    const cidadeSelect = document.getElementById('cidade');
+    cidadeSelect.innerHTML = ''; 
+    if (!uf) {
+        cidadeSelect.innerHTML = '<option value="">Selecione o Estado primeiro</option>';
+        return;
+    }
+    cidadeSelect.disabled = false;
+    if (cidadePreencher) {
+        const optPreenchida = document.createElement('option');
+        optPreenchida.value = cidadePreencher;
+        optPreenchida.textContent = cidadePreencher;
+        cidadeSelect.appendChild(optPreenchida);
+        cidadeSelect.value = cidadePreencher;
+    } else {
+        cidadeSelect.innerHTML = `<option value="">Selecione a cidade</option>`;
+        const optManual = document.createElement('option');
+        optManual.value = 'Cidade Manual';
+        optManual.textContent = 'Cidade Manual (Preencher)';
+        cidadeSelect.appendChild(optManual);
+    }
+}
 
 /**
  * Inicializa os campos do formulário (preenche UFs e adiciona listeners).
@@ -80,8 +90,44 @@ function inicializarFormulario() {
     document.getElementById('cep').addEventListener('input', function (e) {
         e.target.value = e.target.value.replace(/\D/g, '').substring(0, 8);
     });
+
+    // 3. Listener do Upload de Currículo
+    document.getElementById('cvFile').addEventListener('change', handleCvUpload);
 }
 
+/**
+ * Lê o arquivo de currículo e armazena os bytes.
+ */
+function handleCvUpload(event) {
+    const file = event.target.files[0];
+    const statusEl = document.getElementById('cv-status');
+
+    if (!file) {
+        cvPdfBytes = null;
+        statusEl.textContent = 'Nenhum arquivo selecionado.';
+        statusEl.style.color = '#6B7280';
+        return;
+    }
+
+    if (file.type !== 'application/pdf') {
+        alert('Por favor, selecione apenas arquivos no formato PDF.');
+        event.target.value = null; // Limpa o input
+        cvPdfBytes = null;
+        statusEl.textContent = 'Nenhum arquivo selecionado.';
+        statusEl.style.color = '#6B7280';
+        return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        // Armazena o conteúdo do arquivo (ArrayBuffer)
+        cvPdfBytes = e.target.result;
+        statusEl.textContent = `✅ ${file.name}`;
+        statusEl.style.color = '#16A34A';
+    };
+    
+    reader.readAsArrayBuffer(file);
+}
 
 // Inicia o formulário quando o script é carregado
 inicializarFormulario();
@@ -205,107 +251,8 @@ function adicionarCampo(doc, label, valor, y, x, colWidth) {
 }
 
 
-
-// Validação robusta do formulário
-function validarFormulario() {
-    const erros = [];
-    
-    // Validar nome completo
-    const nome = document.getElementById('nomeCompleto').value.trim();
-    if (!nome) erros.push('Nome Completo é obrigatório');
-    
-    // Validar data de nascimento
-    const dataNasc = document.getElementById('dataNascimento').value.trim();
-    if (!dataNasc) {
-        erros.push('Data de Nascimento é obrigatória');
-    } else if (!/^\d{2}\/\d{2}\/\d{4}$/.test(dataNasc)) {
-        erros.push('Data de Nascimento deve estar no formato dd/mm/aaaa');
-    }
-    
-    // Validar CPF
-    const cpf = document.getElementById('cpf').value.trim();
-    if (!cpf) erros.push('CPF é obrigatório');
-    
-    // Validar RG
-    const rg = document.getElementById('rg').value.trim();
-    if (!rg) erros.push('RG é obrigatório');
-    
-    // Validar telefone
-    const telefone = document.getElementById('telefone').value.trim();
-    if (!telefone) erros.push('Telefone é obrigatório');
-    
-    // Validar email
-    const email = document.getElementById('email').value.trim();
-    if (!email) erros.push('E-mail é obrigatório');
-    
-    // Validar CEP
-    const cep = document.getElementById('cep').value.trim();
-    if (!cep) erros.push('CEP é obrigatório');
-    
-    // Validar endereço
-    const endereco = document.getElementById('endereco').value.trim();
-    if (!endereco) erros.push('Endereço é obrigatório');
-    
-    // Validar estado
-    const estado = document.getElementById('estado').value;
-    if (!estado) erros.push('Estado é obrigatório');
-    
-    // Validar cidade
-    const cidade = document.getElementById('cidade').value.trim();
-    if (!cidade) erros.push('Cidade é obrigatória');
-    
-    // Validar experiência como promotor
-    const expPromocao = document.getElementById('experienciaPromocao').value;
-    if (!expPromocao) erros.push('Experiência como Promotor é obrigatória');
-    
-    // Validar celular próprio
-    const celular = document.getElementById('temCelularProprio').value;
-    if (!celular) erros.push('Informação sobre celular próprio é obrigatória');
-    
-    // Validar conhecimento de apps
-    const appEstoque = document.getElementById('conheceAppEstoque').value;
-    if (!appEstoque) erros.push('Informação sobre apps de estoque é obrigatória');
-    
-    // Validar facilidade com tecnologia
-    const facilidadeTec = document.getElementById('facilidadeTecnologia').value;
-    if (!facilidadeTec) erros.push('Facilidade com tecnologia é obrigatória');
-    
-    // Validar disponibilidade de horário
-    const dispHorario = document.getElementById('disponibilidadeHorario').value;
-    if (!dispHorario) erros.push('Disponibilidade de Horário é obrigatória');
-    
-    // Validar disponibilidade de dias
-    const dispDias = document.getElementById('disponibilidadeDias').value;
-    if (!dispDias) erros.push('Disponibilidade de Dias é obrigatória');
-    
-    // Validar início imediato
-    const inicioImed = document.getElementById('inicioImediato').value;
-    if (!inicioImed) erros.push('Informação sobre início imediato é obrigatória');
-    
-    // Validar pretensão salarial
-    const salario = document.getElementById('pretensoSalarial').value.trim();
-    if (!salario) erros.push('Pretensão Salarial é obrigatória');
-    
-    // Validar selfie
-    if (!selfieDataURL) {
-        erros.push('Selfie de verificação é obrigatória');
-    }
-    
-    if (erros.length > 0) {
-        alert('Por favor, preencha os seguintes campos obrigatórios:\n\n' + erros.join('\n'));
-        return false;
-    }
-    
-    return true;
-}
-
 // --- Função principal para gerar o PDF (MODIFICADA) ---
 async function gerarPDF() {
-    // Validar formulário antes de gerar PDF
-    if (!validarFormulario()) {
-        return;
-    }
-    
     const { PDFDocument } = PDFLib; // Carrega a biblioteca de mesclagem
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF('p', 'mm', 'a4');
@@ -337,7 +284,13 @@ async function gerarPDF() {
         comunicacaoEquipe: document.getElementById('comunicacaoEquipe').checked,
         relatorios: document.getElementById('relatorios').checked,
         disponibilidadeHorario: document.getElementById('disponibilidadeHorario').value,
-        disponibilidadeDias: document.getElementById('disponibilidadeDias').value,
+        segunda: document.getElementById('segunda').checked,
+        terca: document.getElementById('terca').checked,
+        quarta: document.getElementById('quarta').checked,
+        quinta: document.getElementById('quinta').checked,
+        sexta: document.getElementById('sexta').checked,
+        sabado: document.getElementById('sabado').checked,
+        domingo: document.getElementById('domingo').checked,
         inicioImediato: document.getElementById('inicioImediato').value,
         pretensoSalarial: document.getElementById('pretensoSalarial').value,
         conheceProdutos: document.getElementById('conheceProdutos').value,
@@ -406,7 +359,15 @@ async function gerarPDF() {
 
     y2 = adicionarSecao(doc, '5. DISPONIBILIDADE', y2, col2X, colWidth);
     y2 = adicionarCampo(doc, 'Horário', dados.disponibilidadeHorario, y2, col2X, colWidth);
-    y2 = adicionarCampo(doc, 'Dias', dados.disponibilidadeDias || 'Não informado', y2, col2X, colWidth);
+    const dias = [];
+    if (dados.segunda) dias.push('Seg');
+    if (dados.terca) dias.push('Ter');
+    if (dados.quarta) dias.push('Qua');
+    if (dados.quinta) dias.push('Qui');
+    if (dados.sexta) dias.push('Sex');
+    if (dados.sabado) dias.push('Sáb');
+    if (dados.domingo) dias.push('Dom');
+    y2 = adicionarCampo(doc, 'Dias', dias.length > 0 ? dias.join(', ') : 'Nenhum selecionado', y2, col2X, colWidth);
     y2 = adicionarCampo(doc, 'Início', dados.inicioImediato, y2, col2X, colWidth);
     y2 += 3;
 

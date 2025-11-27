@@ -32,7 +32,7 @@
                 </div>
                 <div class="form-group">
                     <label for="dataNascimento">Data de Nascimento *</label>
-                    <input type="text" id="dataNascimento" placeholder="dd/mm/aaaa" maxlength="10" required>
+                    <input type="date" id="dataNascimento" required>
                 </div>
                <div class="form-group">
                     <label for="cpf">CPF *</label>
@@ -61,13 +61,15 @@
                 </div>
                 <div class="form-group">
                     <label for="estado">Estado *</label>
-                    <select id="estado" required>
+                    <select id="estado" onchange="carregarCidades(this.value)" required>
                         <option value="">Selecione o Estado</option>
                         </select>
                 </div>
                 <div class="form-group">
                     <label for="cidade">Cidade *</label>
-                    <input type="text" id="cidade" placeholder="Digite o nome da cidade" required>
+                    <select id="cidade" disabled required>
+                        <option value="">Selecione o Estado primeiro</option>
+                    </select>
                 </div>
             </div>
         </div>
@@ -88,16 +90,14 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="tempoExperiencia">Tempo de Experiência (em anos)</label>
+                    <label for="tempoExperiencia">Tempo de Experiência (Total)</label>
                     <select id="tempoExperiencia">
                         <option value="">Selecione</option>
-                        <option value="nenhum">Nenhuma experiência</option>
-                        <option value="menos-1-ano">Menos de 1 ano</option>
-                        <option value="1-ano">1 ano</option>
-                        <option value="2-anos">2 anos</option>
-                        <option value="3-anos">3 anos</option>
-                        <option value="4-anos">4 anos</option>
-                        <option value="5-anos-ou-mais">5 anos ou mais</option>
+                        <option value="nenhum">Nenhuma</option>
+                        <option value="menos-6-meses">Menos de 6 meses</option>
+                        <option value="6m-a-1ano">6 meses a 1 ano</option>
+                        <option value="1-a-3-anos">1 a 3 anos</option>
+                        <option value="mais-3-anos">Mais de 3 anos</option>
                     </select>
                 </div>
                  <div class="form-group full-width">
@@ -209,12 +209,38 @@
                         <option value="tarde">Apenas Tarde</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label for="disponibilidadeDias">Disponibilidade de Dias *</label>
-                    <select id="disponibilidadeDias" required>
-                        <option value="">Selecione</option>
-                        <option value="segunda-a-sabado">Segunda a Sábado</option>
-                    </select>
+                <div class="form-group full-width">
+                    <label>Dias da Semana Disponíveis</label>
+                    <div class="days-grid">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="segunda">
+                            <label for="segunda">Segunda</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="terca">
+                            <label for="terca">Terça</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="quarta">
+                            <label for="quarta">Quarta</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="quinta">
+                            <label for="quinta">Quinta</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="sexta">
+                            <label for="sexta">Sexta</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="sabado">
+                            <label for="sabado">Sábado</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="domingo">
+                            <label for="domingo">Domingo</label>
+                        </div>
+                    </div>
                 </div>
                  <div class="form-group">
                     <label for="inicioImediato">Início Imediato? *</label>
@@ -276,6 +302,21 @@
                     <p style="color: #16A34A; font-weight: bold;">✅ Selfie capturada com sucesso!</p>
                     <img id="preview-image" style="width: 150px; border-radius: 8px; margin-top: 10px;"/>
                 </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2 class="section-title">
+                <span class="section-number">8</span>
+                Anexar Currículo (Opcional)
+            </h2>
+            <p class="section-description">
+                Se desejar, anexe seu currículo em PDF. Ele será incluído no final da sua candidatura.
+            </p>
+            <div class="file-input-container">
+                <input type="file" id="cvFile" accept="application/pdf" class="file-input">
+                <label for="cvFile" class="file-label">Escolher arquivo PDF</label>
+                <span id="cv-status">Nenhum arquivo selecionado.</span>
             </div>
         </div>
 
