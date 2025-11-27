@@ -148,7 +148,7 @@ function adicionarCabecalho(doc) {
         doc.addImage(LOGO_BASE64, 'PNG', 65, 15, 80, 30);
     } catch (e) {
         doc.setFontSize(10);
-        doc.text('LOGO AQUI', 105, 30, { align: 'center' });
+        doc.text('', 105, 30, { align: 'center' });
     }
 
     doc.setFontSize(20);
