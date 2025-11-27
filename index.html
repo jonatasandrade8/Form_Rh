@@ -6,8 +6,6 @@
     <title>Formulário de Recrutamento - Promotor de Vendas</title>
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/pdf-lib/dist/pdf-lib.min.js"></script>
-
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -61,15 +59,13 @@
                 </div>
                 <div class="form-group">
                     <label for="estado">Estado *</label>
-                    <select id="estado" onchange="carregarCidades(this.value)" required>
+                    <select id="estado" required>
                         <option value="">Selecione o Estado</option>
                         </select>
                 </div>
                 <div class="form-group">
                     <label for="cidade">Cidade *</label>
-                    <select id="cidade" disabled required>
-                        <option value="">Selecione o Estado primeiro</option>
-                    </select>
+                    <input type="text" id="cidade" placeholder="Nome da Cidade" required>
                 </div>
             </div>
         </div>
@@ -304,22 +300,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="section">
-            <h2 class="section-title">
-                <span class="section-number">8</span>
-                Anexar Currículo (Opcional)
-            </h2>
-            <p class="section-description">
-                Se desejar, anexe seu currículo em PDF. Ele será incluído no final da sua candidatura.
-            </p>
-            <div class="file-input-container">
-                <input type="file" id="cvFile" accept="application/pdf" class="file-input">
-                <label for="cvFile" class="file-label">Escolher arquivo PDF</label>
-                <span id="cv-status">Nenhum arquivo selecionado.</span>
-            </div>
-        </div>
-
 
         <div class="submit-container">
             <button class="submit-btn" onclick="gerarPDF()">Gerar e Compartilhar Candidatura</button>
