@@ -294,7 +294,7 @@ async function gerarPDF() {
     y1 = adicionarSecao(doc, '3. CONHECIMENTOS', y1, col1X, colWidth);
     y1 = adicionarCampo(doc, 'Celular', dados.temCelularProprio, y1, col1X, colWidth);
     y1 = adicionarCampo(doc, 'Conhece Apps de Estoque', dados.conheceAppEstoque, y1, col1X, colWidth);
-    y1 = adicionarCampo(doc, 'COnhecimento de Tecnologia', dados.facilidadeTecnologia, y1, col1X, colWidth);
+    y1 = adicionarCampo(doc, 'Nível de conhecimento de Tecnologia', dados.facilidadeTecnologia, y1, col1X, colWidth);
     y1 = adicionarCampo(doc, 'Possui veículo próprio', dados.possuiVeiculo, y1, col1X, colWidth);
 
     // --- COLUNA 2 ---
